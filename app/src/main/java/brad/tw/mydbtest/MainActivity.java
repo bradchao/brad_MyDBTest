@@ -1,5 +1,6 @@
 package brad.tw.mydbtest;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,18 @@ public class MainActivity extends AppCompatActivity {
         helper = new MyOpenDBHelper(this,"brad",null,1);
         db = helper.getReadableDatabase();
     }
+
+    public void insert(View v){
+        // INSERT INTO cust (cname,tel,birthday) VALUES ('brad','123','1919-12-12');
+        //db.execSQL();
+        ContentValues values = new ContentValues();
+        values.put("cname", "brad");
+        values.put("tel", "123");
+        values.put("birthday", "1919-12-12");
+        db.insert("cust",null,values);
+        query(null);
+    }
+
 
     public void query(View v){
         // SELECT * FROM cust
