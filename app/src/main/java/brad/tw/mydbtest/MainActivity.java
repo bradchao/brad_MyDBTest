@@ -53,10 +53,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void query(View v){
-        // SELECT * FROM cust
+        // SELECT * FROM cust WHERE .... GROUP BY ... HAVING ... ORDER BY ...
         //db.rawQuery()
         tv.setText("");
-        Cursor c = db.query("cust",null,null,null,null,null,null);
+        Cursor c = db.query("cust",new String[]{"id","cname","tel","birthday"},
+                null,null,null,null,"cname desc");
         while (c.moveToNext()){
             String id = c.getString(c.getColumnIndex("id"));
             String cname = c.getString(c.getColumnIndex("cname"));
