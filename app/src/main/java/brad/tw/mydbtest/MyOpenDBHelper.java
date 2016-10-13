@@ -9,13 +9,15 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class MyOpenDBHelper extends SQLiteOpenHelper {
+    private final static String createTable =
+            "CREATE TABLE cust (id INTEGER PRIMARY KEY AUTOINCREMENT,cname TEXT,tel TEXT,birthday DATE)";
     public MyOpenDBHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        db.execSQL(createTable);
     }
 
     @Override
