@@ -42,6 +42,15 @@ public class MainActivity extends AppCompatActivity {
         query(null);
     }
 
+    public void update(View v){
+        // UPDATE cust SET cname='peter',tel='321' WHERE id = 5;
+        ContentValues values = new ContentValues();
+        values.put("cname", "peter");
+        values.put("tel", "321");
+        db.update("cust",values,"id = ?",new String[]{"5"});
+        query(null);
+    }
+
 
     public void query(View v){
         // SELECT * FROM cust
